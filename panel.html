@@ -2,37 +2,45 @@
 <html>
 <head>
   <title>Claude Assistant</title>
+  <!-- Librería de Office.js -->
   <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 </head>
 <body>
   <h2>Claude Assistant</h2>
   <textarea id="prompt" rows="4" cols="50" placeholder="Escribe tu consulta..."></textarea>
+  <br/>
   <button onclick="sendToClaude()">Enviar</button>
-  <div id="response"></div>
+  <div id="response" style="margin-top:20px; white-space:pre-wrap;"></div>
 
   <script>
     async function sendToClaude() {
       const prompt = document.getElementById("prompt").value;
       const apiKey = "TU_API_KEY"; // reemplaza con tu clave de Anthropic
 
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": apiKey
-        },
-        body: JSON.stringify({
-          model: "claude-3-opus-20240229",
-          messages: [{ role: "user", content: prompt }]
-        })
-      });
+      try {
+        const response = await fetch("https://api.anthropic.com/v1/messages", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": apiKey
+          },
+          body: JSON.stringify({
+            model: "claude-3-opus-20240229",
+            messages: [{ role: "user", content: prompt }]
+          })
+        });
 
-      const data = await response.json();
-      const text = data.content[0].text;
-      document.getElementById("response").innerText = text;
+        const data = await response.json();
+        const text = data.content[0].text;
 
-      // Ejemplo: insertar respuesta en celda activa
-      Office.context.document.setSelectedDataAsync(text);
+        // Mostrar en el panel
+        document.getElementById("response").innerText = text;
+
+        // Insertar en la celda activa de Excel
+        Office.context.document.setSelectedDataAsync(text);
+      } catch (error) {
+        document.getElementById("response").innerText = "Error: " + error.message;
+      }
     }
   </script>
 </body>
