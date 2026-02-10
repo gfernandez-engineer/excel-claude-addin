@@ -64,21 +64,25 @@ https://raw.githubusercontent.com/gfernandez-engineer/excel-claude-addin/main/ma
 
 const apiKey = "TU\_API\_KEY";
 
-
+```
 
 2\. En tu PC, guarda una copia privada de panel.html con tu clave real:
 
+```
+
 const apiKey = "sk-ant-xxxxxxxxxxxxxxxx";
 
-
+```
 
 
 
 3\. Ajusta tu manifest.xml local para que apunte a tu copia privada:
 
+```
+
 <SourceLocation DefaultValue="file:///C:/Users/Gian/excel-claude-addin/panel.html"/>
 
-
+```
 
 4\. Carga ese manifest.xml en Excel desde el catálogo confiable.
 
