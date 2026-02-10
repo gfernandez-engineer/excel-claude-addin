@@ -80,7 +80,7 @@ const apiKey = "sk-ant-xxxxxxxxxxxxxxxx";
 
 ```
 
-<SourceLocation DefaultValue="file:///C:/Users/Gian/excel-claude-addin/panel.html"/>
+<SourceLocation DefaultValue="file:///C:/Users/Lenovo/excel-claude-addin/panel.html"/>
 
 ```
 
