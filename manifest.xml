@@ -23,7 +23,7 @@
   <!-- Panel lateral que se abrirá en Excel -->
   <DefaultSettings>
     <!-- Ruta local a tu panel privado -->
-    <SourceLocation DefaultValue="file:///C:/Users/Gian/excel-claude-addin/panel.html"/>
+    <SourceLocation DefaultValue="http://localhost:3000/panel"/>
   </DefaultSettings>
 
   <Permissions>ReadWriteDocument</Permissions>
